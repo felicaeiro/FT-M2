@@ -1,20 +1,25 @@
-const url = 'http://localhost:5000/amigos';
+const PATH = 'http://localhost:5000/amigos';
+const loading = $('img');
+loading.hide();
 
-$('#boton').click(function () {
-  let lista = document.getElementById('lista');
-  lista.innerHTML = '';
-  $.get(url, function (data) {
-    data.forEach((element) => {
+const getAmigos = () => {
+  loading.show();
+  const lista = $('#lista');
+  lista.empty();
+  $.get(PATH, (data) => {
+    for (const amigo of data) {
       let li = document.createElement('li');
-      li.innerHTML = element.name;
-      lista.appendChild(li);
-    });
+      li.innerText = amigo.name;
+      lista.append(li);
+    }
+    loading.hide();
   });
-});
+};
+$('#boton').click(getAmigos);
 
 $('#search').click(function () {
   let id = document.getElementById('input').value;
-  $.get(`${url}/${id}`, function (data) {
+  $.get(`${PATH}/${id}`, function (data) {
     document.getElementById('amigo').innerHTML =
       'Nombre: ' + data.name + '. Edad: ' + data.age + '. Email: ' + data.email;
   });
@@ -23,7 +28,7 @@ $('#search').click(function () {
 $('#delete').click(function () {
   let id = document.getElementById('inputDelete').value;
   $.ajax({
-    url: `${url}/${id}`,
+    url: `${PATH}/${id}`,
     method: 'DELETE',
     success: () => (document.getElementById('success').innerHTML = 'ok'),
   });
