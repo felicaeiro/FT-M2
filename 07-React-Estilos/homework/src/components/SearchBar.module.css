@@ -5,7 +5,7 @@
     border-radius: 5px;
 }
 
-.button-search {
+.button {
     border: 1px solid green;
     color: green;
     margin: 5px;
@@ -14,7 +14,7 @@
     padding: 10px;
 }
 
-#input-search{
+#inputSearch{
     border-radius: 5px;
     padding: 10px;
     border-style:solid;

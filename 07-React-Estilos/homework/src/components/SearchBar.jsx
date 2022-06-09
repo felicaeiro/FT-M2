@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './SearchBar.css'
+import s from './SearchBar.module.css'
 
 
 
@@ -12,9 +12,9 @@ export default function SearchBar({onSearch}) {
   }
 
   return (
-  <div className='search'>
-    <input id='input-search' type="text" placeholder='Ciudad...'/>
-    <button onClick={handleOnSearch} className='button-search'>Agregar</button>
+  <div className={`${s.search}`}>
+    <input id={`${s.inputSearch}`} type="text" placeholder='Ciudad...'/>
+    <button onClick={handleOnSearch} className={`${s.button}`}>Agregar</button>
   </div>)
 };
 
