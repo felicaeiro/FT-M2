@@ -1,0 +1,21 @@
+.search {
+    background-color: rgb(167, 164, 164);
+    max-width: 75%;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.button-search {
+    border: 1px solid green;
+    color: green;
+    margin: 5px;
+    background-color: rgb(167, 164, 164);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#input-search{
+    border-radius: 5px;
+    padding: 10px;
+    border-style:solid;
+}

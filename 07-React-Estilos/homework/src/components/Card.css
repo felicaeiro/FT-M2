@@ -1,0 +1,30 @@
+.button {
+    grid-area: button;
+    margin-left: 260px;
+    background-color: red;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+}
+.city {
+    grid-area: city;
+    font-size: 1.5rem;
+}
+.min{grid-area: min;}
+.max{grid-area: max;}
+.imagen{grid-area: imagen;}
+
+.card {
+    display: grid;
+    grid-template-areas:
+        'button button button'
+        'city city city '
+        'min max imagen';
+    width: 500px;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid;
+    background-color: lightblue;
+
+}
+
