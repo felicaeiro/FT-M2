@@ -1,0 +1,20 @@
+#logoHenry {
+  margin: 10px;
+}
+
+.navBar {
+  display: flex;
+  background-color: rgb(167, 164, 164);
+  justify-content: space-between;
+}
+
+.head{
+  display: flex;
+  margin-left: 20px;
+}
+
+.title {
+  font-size: 2rem;
+  color: white;
+  margin: 10px;
+}
