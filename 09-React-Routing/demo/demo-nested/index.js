@@ -1,6 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Route, Switch, Link, HashRouter as Router, useRouteMatch } from 'react-router-dom';
+import {
+  Route,
+  Switch,
+  Link,
+  HashRouter as Router,
+  useRouteMatch,
+} from 'react-router-dom';
 
 function NavBar() {
   return (
@@ -11,14 +17,14 @@ function NavBar() {
       <Link to="/home">Home</Link>
     </div>
   );
-};
+}
 
 function Home() {
   let match = useRouteMatch();
   return (
     <div>
       <h2>Home, Soy Henry!!</h2>
-      <Link to='/linkAbsolute'>Link Absolute</Link>
+      <Link to="/linkAbsolute">Link Absolute</Link>
       <br></br>
       <Link to={`${match.url}/linkRelative`}>Link Relative</Link>
 
@@ -29,8 +35,7 @@ function Home() {
       </Switch> */}
     </div>
   );
-};
-
+}
 
 const Root = (
   <Router>
@@ -50,4 +55,3 @@ const Root = (
 );
 
 render(Root, document.querySelector('#app'));
-
