@@ -6,16 +6,38 @@ export default function AppHooks() {
   const [name, setName] = useState('Hooks');
   const [width, setWidth] = useState(window.innerWidth)
 
-  const dispatch = useDispatch()
+  //useDispatch -> store.dispatch()
+  //connect(mapStateToProps, null)
+  const dispatch = useDispatch() // dispatch va a despachar acciones
+  //dispatch(saveName(name))
+
+  //useSelector -> mapStateToProps
+  //function mapStateToProps(state) {
+  // return {
+  //   nameRedux: state.name
+  //}
+  //}
+
   const nameRedux = useSelector(state => state.name)
-  
+
+  //otro Hook
+  // useReducer(state, initialState) => devuelve un arreglo [state, dispatch]
+
+  useEffect(() =>
+    console.log('Hubo un cambio')
+      //se ejecuta siempre(cuando se monta y cada vez que se modifica el estado local)
+  )
+
   useEffect(() => {
+    console.log('se ejecuta una vez, cuando se monta')
     const handleResize = () => setWidth(window.innerWidth)
     window.addEventListener('resize', handleResize)
 
     return () => {
       console.log('Entra...');
+      console.log('se ejecuta cuando se desmonta(AppHooks)')
       window.removeEventListener('resize', handleResize)
+      //se ejecuta cuando se desmonta el componente
     }
   }, [])
   
@@ -25,7 +47,15 @@ export default function AppHooks() {
 
   useEffect(() => {
     document.title = name
+    console.log('se modifico el estado name')
+    //se ejecuta cada vez que se modifica el estado de name
   },[name])
+
+  useEffect(() => {
+    console.log('se modifico el estado local nameRedux')
+    //se ejecuta cada vez que se modifica el estado de nameRedux
+  },[nameRedux])
+
 
   return (
     <div className="App">
