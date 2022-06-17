@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getMovieDetail } from '../../actionCreators/index';
+import MovieDetails from '../MovieDetails/MovieDetails';
 
-import './Movie.css';
 
 class Movie extends React.Component {
   componentDidMount() {
@@ -14,12 +14,18 @@ class Movie extends React.Component {
     // const { movie } = this.props.movie;
     return (
       <div className="movie-detail">
-        <h1>{this.props.movie.Title}</h1>
-        <h4>Fecha de estreno:</h4> <p>{this.props.movie.Released}</p>
-        <h4>Director: </h4>
-        <p>{this.props.movie.Director}</p>
-        <h4>Género:</h4> <p>{this.props.movie.Genre}</p>
-        <h4>Sinopsis:</h4> <p>{this.props.movie.Plot} </p>
+        {this.props.loading ? 'loading...' : 
+        <MovieDetails 
+          title={this.props.movie.Title} 
+          poster={this.props.movie.Poster}
+          director={this.props.movie.Director}
+          rating={this.props.movie.imdbRating}
+          awards={this.props.movie.Awards}
+          genre={this.props.movie.Genre}
+          released={this.props.movie.Released} 
+          runtime={this.props.movie.Runtime}
+          plot={this.props.movie.Plot}/>
+        } 
       </div>
     );
   }
@@ -28,6 +34,7 @@ class Movie extends React.Component {
 function mapStateToProps(state) {
   return {
     movie: state.movieDetail,
+    loading: state.loading
   };
 }
 

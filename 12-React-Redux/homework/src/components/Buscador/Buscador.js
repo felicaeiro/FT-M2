@@ -22,9 +22,9 @@ export class Buscador extends Component {
   render() {
     const { title } = this.state;
     return (
-      <div>
+      <div className='cnt'>
         <h2>Buscador</h2>
-        <form className="form-container" onSubmit={(e) => this.handleSubmit(e)}>
+        <form className="formContainer" onSubmit={(e) => this.handleSubmit(e)}>
           <div>
             <label className="label" htmlFor="title">
               Película:{' '}

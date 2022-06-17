@@ -7,7 +7,7 @@ import './Favorites.css';
 export class ConnectedList extends Component {
   render() {
     return (
-      <div>
+      <div className='cnt'>
         <h2>Películas Favoritas</h2>
         <ul>
           {this.props.favorites.map((movie) => (

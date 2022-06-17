@@ -1,16 +1,17 @@
 import {
   GET_MOVIES,
-  GET_MOVIE_DETAIL,
+  // GET_MOVIE_DETAIL,
   ADD_MOVIE_FAVORITE,
   REMOVE_MOVIE_FAVORITE,
-  //   GET_POST,
-  //   RECEIVE_POST
+  GET_POST,
+  RECEIVE_POST
 } from '../actions/index';
 
 const initialState = {
   moviesFavourites: [],
   moviesLoaded: [],
   movieDetail: {},
+  loading: false
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -20,11 +21,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         moviesLoaded: action.movies,
       };
-    case GET_MOVIE_DETAIL:
-      return {
-        ...state,
-        movieDetail: action.detail,
-      };
+    // case GET_MOVIE_DETAIL:
+    //   return {
+    //     ...state,
+    //     movieDetail: action.detail,
+    //   };
     case ADD_MOVIE_FAVORITE:
       return {
         ...state,
@@ -37,17 +38,17 @@ export default function rootReducer(state = initialState, action) {
           (movie) => movie.title !== action.movieTitle
         ),
       };
-    // case GET_POST:
-    //   return {
-    //     ...state,
-    //     loading: true,
-    //   };
-    // case RECEIVE_POST:
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     post: action.post,
-    //   };
+    case GET_POST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case RECEIVE_POST:
+      return {
+        ...state,
+        loading: false,
+        movieDetail: action.detail,
+      };
     default:
       return state;
   }
