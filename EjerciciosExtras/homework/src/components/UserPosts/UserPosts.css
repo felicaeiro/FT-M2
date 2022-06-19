@@ -5,7 +5,7 @@
 }
 
 .container {
-  width: 40%;
+  /* width: 40%; */
   height: 20%;
   background: #4d4d4d;
   border-radius: 5px;
@@ -31,4 +31,7 @@
     position: relative;
 }
 
-
+.post{
+  border-bottom: solid 1px black;
+  width: 95%
+}

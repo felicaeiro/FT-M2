@@ -1,53 +1,64 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import './Buscador.css';
+import "./Buscador.css";
 
 export class Buscador extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      postsSearch: "",
+      filtrados: [],
+    };
+  }
 
   handleSubmit(event) {
     event.preventDefault();
     this.setState({
-     filtrados: this.props.posts.filter(p => p.title.includes(this.state.postsSearch))
-    })
+      filtrados: this.props.posts.filter((p) =>
+        p.title.includes(this.state.postsSearch)
+      ),
+    });
     this.setState({
-      postsSearch: ""
-    })
+      postsSearch: "",
+    });
   }
-  
-  viewAllPost(){
+
+  viewAllPost() {
     this.setState({
-      filtrados: this.props.posts
-    })
+      filtrados: this.props.posts,
+    });
   }
 
   render() {
-    const {  postsSearch } = this.state;
+    const { postsSearch } = this.state;
     return (
-      <div className= "details">
+      <div className="details">
         <h2>Buscador</h2>
         <form className="form-container" onSubmit={(e) => this.handleSubmit(e)}>
           <div>
-            <label className="label" htmlFor="user">Posts: </label>
+            <label className="label" htmlFor="user">
+              Posts:{" "}
+            </label>
             <input
               type="text"
               id="title"
               autoComplete="off"
-              value={ postsSearch}
+              value={postsSearch}
             />
           </div>
           <button type="submit">BUSCAR</button>
         </form>
-        
-        <button className="btn2" onClick={() => this.viewAllPost()}>VER TODOS</button>
+
+        <button className="btn2" onClick={() => this.viewAllPost()}>
+          VER TODOS
+        </button>
         <div className="details">
-             <h4 className="title">Posts </h4>
-                <div className= "card">
-      
-                  </div>
-            </div>
+          <h4 className="title">Posts </h4>
+          <div className="card"></div>
+        </div>
       </div>
     );
   }
 }
-export default Buscador;
+export default connect()(Buscador);
