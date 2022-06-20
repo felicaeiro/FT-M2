@@ -5,21 +5,8 @@ import { getAllCommentsPost } from "../../actions/index";
 import "./CommentsPost.css";
 
 export class CommentsPost extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      comments: [],
-    };
-  }
-
   componentDidMount() {
-    // const id = this.props.postId;
-    // this.props.getAllCommentsPost(id);
-    // console.log(this.props.commentsPost);
-    // .then((c) => {
-    //   console.log("Comentarios cargados con éxito...");
-    // })
-    // .catch((err) => console.error(err));
+    this.props.getAllCommentsPost(this.props.id);
   }
 
   render() {
@@ -29,14 +16,19 @@ export class CommentsPost extends React.Component {
         {!this.props.commentsPost ? (
           <p>No hay comentarios</p>
         ) : (
-          this.props.commentsPost.map((comment) => (
-            <div key={comment.id} className="container">
-              <h4>
-                {comment.id} - {comment.name}
-              </h4>
-              <p>{comment.body}</p>
-            </div>
-          ))
+          this.props.commentsPost.map((comment) => {
+            if (this.props.id === comment.postId) {
+              return (
+                <div key={comment.id} className="container">
+                  <h4>
+                    {comment.id} - {comment.name}
+                  </h4>
+                  <p>{comment.body}</p>
+                </div>
+              );
+            }
+            return null;
+          })
         )}
       </div>
     );

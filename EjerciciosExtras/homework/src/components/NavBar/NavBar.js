@@ -21,10 +21,12 @@ export default function NavBar() {
       </div>
       <nav>
         <ul className="list">
-          <NavLink to="/buscador">
-            <li className="list-item">Buscador</li>
-          </NavLink>
-          <li className="list-item"></li>
+          <li className="listItem">
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li className="listItem">
+            <NavLink to="/filter/posts">Posts</NavLink>
+          </li>
         </ul>
       </nav>
     </header>

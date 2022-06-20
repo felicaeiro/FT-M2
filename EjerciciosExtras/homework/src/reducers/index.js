@@ -27,7 +27,12 @@ export default function rootReducer(state = initialState, action) {
     case GET_ALL_COMMENTS_POST:
       return {
         ...state,
-        commentsPost: action.comments,
+        commentsPost: state.commentsPost.concat(action.comments),
+      };
+    case GET_ALL_POSTS:
+      return {
+        ...state,
+        posts: action.posts,
       };
     default:
       return state;

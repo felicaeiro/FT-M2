@@ -7,15 +7,12 @@ import { Provider } from "react-redux";
 import { store } from "../src/store";
 
 import { BrowserRouter as Router } from "react-router-dom";
-import CommentsPost from "./components/CommentsPost/CommentsPost";
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <App />
-      <CommentsPost />
     </Router>
-    ,
   </Provider>,
   document.getElementById("root")
 );
